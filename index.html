@@ -5,7 +5,7 @@
   <link rel="stylesheet" type="text/css" href="styles.css">
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Hypothesis Testing</title>
+<title>Correlation ≠ Causation</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
@@ -7504,6 +7504,7 @@ a.anchor-link {
     white-space: normal;
   }
 </style>
+
 <style>
   body {
       margin: 0;
@@ -7519,7 +7520,7 @@ a.anchor-link {
       top: 0;
       left: 0;
       width: 100%;
-      background-color: #D0DBE1;
+      background-color: #d498cb;
       color: black;
       padding: 20px 0;
       box-shadow: 0 2px 5px rgba(0,0,0,0.2);
@@ -7553,31 +7554,32 @@ a.anchor-link {
   }
 
   #brandText, #brandImg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;               /* Center content */
-  align-items: center;
-  justify-content: flex-start; /* Align content to the left */
-  transition: opacity 0.5s ease-in-out;
-  padding-left: 40px;          /* 👈 Add desired left padding */
-  box-sizing: border-box;      /* Ensure padding doesn't break layout */
-}
-
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      transition: opacity 0.5s ease-in-out;
+      padding-left: 40px; /* 👈 Add desired left padding */
+      box-sizing: border-box;
+  }
 
   #brandText {
       color: black;
       font-weight: bold;
       font-size: 18px;
-      margin-top: 10px;
+      margin-top: 0; /* Removed margin-top to align at the top */
+      opacity: 0; /* Start with text hidden */
   }
 
   #brandImg img {
       max-height: 100%;
       max-width: 100%;
       object-fit: contain;
+      opacity: 1; /* Start with image visible */
   }
 
   .visible {
@@ -7590,14 +7592,14 @@ a.anchor-link {
       padding: 0 20px;
   }
 
-.navbar-center h1 {
-  font-size: 18px;
-  font-weight: bold;
-  color: #262326;
-  margin: 0;
-  padding-left: 20px;
-  white-space: nowrap;
-}
+  .navbar-center h1 {
+      font-size: 18px;
+      font-weight: bold;
+      color: #262326;
+      margin: 0;
+      padding-left: 20px;
+      white-space: nowrap;
+  }
 
   .navbar-right {
       min-width: 160px;
@@ -7605,18 +7607,21 @@ a.anchor-link {
   }
 </style>
 
-<script>let toggleState = true;
+<script>
+  let toggleState = true;
+
   setInterval(() => {
     if (toggleState) {
-      document.getElementById("brandText").style.display = "inline";
-      document.getElementById("brandImg").style.display = "none";
+      document.getElementById("brandText").style.opacity = 1;
+      document.getElementById("brandImg").style.opacity = 0;
     } else {
-      document.getElementById("brandText").style.display = "none";
-      document.getElementById("brandImg").style.display = "inline";
+      document.getElementById("brandText").style.opacity = 0;
+      document.getElementById("brandImg").style.opacity = 1;
     }
     toggleState = !toggleState;
-  }, 2000);</script>
-  
+  }, 2000);
+</script>
+
 </head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
   <nav>
@@ -7629,9 +7634,10 @@ a.anchor-link {
       </a>
     </div>
     <div class="navbar-center">
-      <h1>Project: A/B Testing: Measuring Conversion Rates from Website Clicks to Purchases</h1>
+      <h1>Project: Correlation ≠ Causation- An Interactive Insight</h1>
     </div>
   </nav>
+  
 <main>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e99cd2fd-8b7d-44c8-9591-f46a5d24fd89">
 <div class="jp-Cell-inputWrapper" tabindex="0">
